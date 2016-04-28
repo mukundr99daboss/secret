@@ -10,12 +10,31 @@ canvas {
 </style>
 </head>
 <body onload="startGame()">
+<body onload="runBGSlideShow()"
 <script>
 var speed = 2000
 var Pic = new Array()
-Pic[0]=''
-Pic[1]
-Pic[2]
+Pic[0]='github(0).jpg'
+Pic[1]='github(1).jpg'
+Pic[2]='github(2).jpg'
+var t
+var j = 0
+var p = Pic.length
+
+var preLoad = new Array()
+for (i = 0; i < p; i++){
+   preLoad[i] = new Image()
+   preLoad[i].src = Pic[i]
+}
+
+function runBGSlideShow(){
+   if (document.body){
+   document.body.background = Pic[j];
+   j = j + 1
+   if (j > (p-1)) j=0
+   t = setTimeout('runBGSlideShow()', speed)
+   }
+}
 var myGamePiece;
 var myObstacles = [];
 var myScore;
